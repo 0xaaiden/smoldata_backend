@@ -71,7 +71,7 @@ const processMessage = async (message, messageRef, firestoreMessageRef) => {
     // fromBlock: 3154100,
     fromBlock: startBlock,
     toBlock: endBlock,
-    batchSize: 5,
+    batchSize: 1,
   });
 
   // zip folder, upload to storage and update entry
