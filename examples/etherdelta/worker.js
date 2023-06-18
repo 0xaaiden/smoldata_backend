@@ -53,7 +53,10 @@ const processMessage = async (message, messageRef, firestoreMessageRef) => {
   );
 
   const getNextNode = workerData.getNextNode;
-
+  //create tmp folder
+  if (!fs.existsSync("./tmp")) {
+    fs.mkdirSync("./tmp");
+  }
   const store = new Store(IndexingABI, `./tmp/task-index-${messageKey}-db`);
   const indexer = new Indexer(store, abi, address, getNextNode);
   // register listener for syncProgress events to track progress in firestore meta field
