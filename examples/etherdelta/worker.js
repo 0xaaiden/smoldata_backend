@@ -141,6 +141,9 @@ parentPort.on("message", async ({ message, messageKey }) => {
   } catch (error) {
     console.error(chalk.red("✖"), error);
     parentPort.postMessage({ success: false, error: error.message });
+    // update status to Failed
+    await messageRef.update({ status: "failed" });
+    await firestoreMessageRef.update({ status: "failed" });
     process.exit(1);
   }
 });
